@@ -8,16 +8,9 @@
  * ------------------------------------------------------------
  */
 {
-  "sections": {
-    "main": {
-      "type": "main-account",
-      "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    }
+  "parent": "footer-group.json",
+  "context": {
+    "market": "lt"
   },
-  "order": [
-    "main"
-  ]
+  "sections": {}
 }

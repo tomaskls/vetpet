@@ -15,9 +15,50 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "collection_list_8PUf4L": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_t3t88h": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kaciu-higiena"
+          }
+        },
+        "featured_collection_iR7paJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sausas-maistas"
+          }
+        },
+        "featured_collection_pF6Hq6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_t3t88h",
+        "featured_collection_iR7paJ",
+        "featured_collection_pF6Hq6"
+      ],
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "collection_list_8PUf4L"
   ]
 }

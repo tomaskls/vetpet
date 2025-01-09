@@ -184,7 +184,7 @@
           "label": "Nieprzezroczystość"
         },
         "image_padding": {
-          "label": "Wypełnienie obrazu"
+          "label": "Dopełnienie obrazu"
         },
         "text_alignment": {
           "options__1": {
@@ -382,9 +382,9 @@
   "sections": {
     "all": {
       "padding": {
-        "section_padding_heading": "Wypełnienie sekcji",
-        "padding_top": "Wypełnienie na górze",
-        "padding_bottom": "Wypełnienie na dole"
+        "section_padding_heading": "Dopełnienie sekcji",
+        "padding_top": "Dopełnienie na górze",
+        "padding_bottom": "Dopełnienie na dole"
       },
       "spacing": "Odstępy",
       "colors": {
@@ -1702,7 +1702,7 @@
             },
             "swatch_shape": {
               "label": "Próbka",
-              "info": "Dowiedz się więcej o [próbkach](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) w opcjach produktu",
+              "info": "Włącz [próbki](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) w opcjach produktu.",
               "options__1": {
                 "label": "Koło"
               },
@@ -2576,7 +2576,7 @@
             },
             "swatch_shape": {
               "label": "Próbka",
-              "info": "Dowiedz się więcej o [próbkach](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) w opcjach produktu",
+              "info": "Włącz [próbki](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#options-with-swatches) w opcjach produktu.",
               "options__1": {
                 "label": "Koło"
               },
