@@ -46,17 +46,19 @@
           "settings": {
             "button_label_1": "mugtukas1",
             "button_link_1": "shopify://pages/akcijos",
-            "button_style_secondary_1": false,
-            "button_label_2": "Mygtukas2",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_style_secondary_1": false
           }
         }
       },
       "block_order": [
         "buttons_XiPPqD"
       ],
+      "custom_css": [
+        ".banner__media a {cursor: pointer; z-index: 10;}"
+      ],
       "settings": {
+        "image": "shopify://shop_images/cute-3273789_1280.jpg",
+        "image_link": "shopify://pages/akcijos",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "bottom-center",
