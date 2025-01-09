@@ -70,7 +70,7 @@
         assign sizes = full_width
         endif
         -%}
-        <a href="shopify://pages/akcijos" class="banner__image-link">
+        <a href="{{ section.settings.image_link }}">
       {{
         section.settings.image
         | image_url: width: 3840
