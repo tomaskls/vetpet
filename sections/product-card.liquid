@@ -1,0 +1,115 @@
+{% comment %}
+  Product card template with image, buy button and quick view
+{% endcomment %}
+
+<div class="product-card">
+    <div class="product-card__image">
+      <a href="{{ product.url }}" class="product-card__link">
+        {% if product.featured_image %}
+          <img
+            src="{{ product.featured_image | img_url: '240x' }}"
+            alt="{{ product.featured_image.alt | escape }}"
+            class="product-card__img lazyload"
+            width="240"
+            height="180"
+            loading="lazy"
+            onerror="this.src='/assets/image-not-found.gif';"
+          >
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'product-card__img' }}
+        {% endif %}
+      </a>
+    </div>
+  
+    <div class="product-card__buttons">
+      {% form 'product', product %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button
+          type="submit"
+          class="button button--primary product-card__buy"
+          {% unless product.available %}disabled{% endunless %}
+        >
+          {% if product.available %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% else %}
+            {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </button>
+      {% endform %}
+  
+      <button
+        type="button"
+        class="button button--secondary product-card__quick-view"
+        data-product-id="{{ product.id }}"
+        data-quick-view
+      >
+        {{ 'products.product.quick_view' | t }}
+      </button>
+    </div>
+  </div>
+  
+  {% style %}
+  .product-card {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .product-card__image {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .product-card__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .product-card__buttons {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+  }
+  
+  .product-card:hover .product-card__buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button--primary {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .button--secondary {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  {% endstyle %}
+  
+  {% javascript %}
+  document.querySelectorAll('[data-quick-view]').forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId;
+      // Add your quick view implementation here
+      console.log(`Quick view clicked for product ${productId}`);
+    });
+  });
+  {% endjavascript %}
