@@ -1,0 +1,125 @@
+
+
+{% comment %}
+  sections/full-width-image-link.liquid
+{% endcomment %}
+
+<div class="full-width-image isolate">
+  {%- if section.settings.link != blank -%}
+    <a href="{{ section.settings.link }}" {% if section.settings.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+  {%- endif -%}
+  
+  {%- if section.settings.image != blank -%}
+    {{ section.settings.image | image_url: width: 3000 | image_tag:
+      loading: 'lazy',
+      width: section.settings.image.width,
+      height: section.settings.height,
+      class: 'full-width-image__image',
+      alt: section.settings.image.alt | default: section.settings.alt_text
+    }}
+  {%- else -%}
+    {{ 'lifestyle-1' | placeholder_svg_tag: 'full-width-image__image placeholder' }}
+  {%- endif -%}
+
+  {%- if section.settings.link != blank -%}
+    </a>
+  {%- endif -%}
+</div>
+
+{% style %}
+.full-width-image {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.full-width-image__image {
+  width: 100%;
+  height: {{ section.settings.height }}px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 989px) {
+  .full-width-image__image {
+    height: {{ section.settings.height_tablet }}px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .full-width-image__image {
+    height: {{ section.settings.height_mobile }}px;
+  }
+}
+
+.placeholder {
+  background-color: #f5f5f5;
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Full-width Image Link",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Alt text",
+      "info": "Describe the image for accessibility"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "default": false,
+      "label": "Open in new tab"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 300,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop height",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "height_tablet",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Tablet height",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "min": 100,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile height",
+      "default": 300
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full-width Image Link"
+    }
+  ]
+}
+{% endschema %}

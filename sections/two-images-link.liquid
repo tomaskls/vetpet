@@ -1,0 +1,199 @@
+{% comment %}
+  sections/two-images-link.liquid
+{% endcomment %}
+
+<div class="two-images-section">
+  <div class="two-images-grid">
+    <div class="image-container">
+      {%- if section.settings.link_1 != blank -%}
+        <a href="{{ section.settings.link_1 }}" {% if section.settings.open_in_new_tab_1 %}target="_blank" rel="noopener"{% endif %}>
+      {%- endif -%}
+      
+      {%- if section.settings.image_1 != blank -%}
+        {{ section.settings.image_1 | image_url: width: 1500 | image_tag:
+          loading: 'lazy',
+          width: section.settings.image_1.width,
+          height: section.settings.height,
+          class: 'full-width-image',
+          alt: section.settings.image_1.alt | default: section.settings.alt_text_1
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'full-width-image placeholder' }}
+      {%- endif -%}
+
+      {%- if section.settings.link_1 != blank -%}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="image-container">
+      {%- if section.settings.link_2 != blank -%}
+        <a href="{{ section.settings.link_2 }}" {% if section.settings.open_in_new_tab_2 %}target="_blank" rel="noopener"{% endif %}>
+      {%- endif -%}
+      
+      {%- if section.settings.image_2 != blank -%}
+        {{ section.settings.image_2 | image_url: width: 1500 | image_tag:
+          loading: 'lazy',
+          width: section.settings.image_2.width,
+          height: section.settings.height,
+          class: 'full-width-image',
+          alt: section.settings.image_2.alt | default: section.settings.alt_text_2
+        }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'full-width-image placeholder' }}
+      {%- endif -%}
+
+      {%- if section.settings.link_2 != blank -%}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% style %}
+.two-images-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.two-images-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.image-container {
+  width: 100%;
+}
+
+.full-width-image {
+  width: 100%;
+  height: {{ section.settings.height }}px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 989px) {
+  .full-width-image {
+    height: {{ section.settings.height_tablet }}px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .two-images-grid {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 10px;
+    gap: 10px
+  }
+  
+  .full-width-image {
+    height: {{ section.settings.height_mobile }}px;
+  }
+}
+
+.placeholder {
+  background-color: #f5f5f5;
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Two Images Link",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "First Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "alt_text_1",
+      "label": "Alt text",
+      "info": "Describe the image for accessibility"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "Link for image 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab_1",
+      "default": false,
+      "label": "Open in new tab"
+    },
+    {
+      "type": "header",
+      "content": "Second Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "alt_text_2",
+      "label": "Alt text",
+      "info": "Describe the image for accessibility"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Link for image 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab_2",
+      "default": false,
+      "label": "Open in new tab"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 300,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop height",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "height_tablet",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Tablet height",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "min": 100,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile height",
+      "default": 300
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Images Link"
+    }
+  ]
+}
+{% endschema %}
